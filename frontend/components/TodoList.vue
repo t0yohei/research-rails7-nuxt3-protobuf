@@ -30,9 +30,9 @@
 </template>
 
 <script lang="ts">
-import Vue, { reactive } from 'vue';
+import { defineComponent, reactive } from 'vue';
 
-export default Vue.defineComponent({
+export default defineComponent({
   setup() {
     const todos = reactive([
       {

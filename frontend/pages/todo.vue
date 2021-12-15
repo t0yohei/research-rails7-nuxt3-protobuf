@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import TodoList from '/components/TodoList.vue'
+import { defineComponent } from 'vue';
+import TodoList from '/components/TodoList.vue';
 
-export default Vue.defineComponent({
+export default defineComponent({
   components: {
-    TodoList
-  }
-})
+    TodoList,
+  },
+});
 </script>
 
 <style scoped></style>
