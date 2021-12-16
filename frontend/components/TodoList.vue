@@ -30,15 +30,7 @@
 </template>
 
 <script setup lang="ts">
-const todos = [
-  {
-    id: 1,
-    name: 'hoge',
-    detail: 'this is dsssesstsail',
-    completed: false,
-    deleted: false,
-  },
-];
+const { data: todos } = await useFetch('/api/todo');
 </script>
 
 <style scoped>
