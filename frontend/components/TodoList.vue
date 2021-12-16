@@ -29,24 +29,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive } from 'vue';
-
-export default defineComponent({
-  setup() {
-    const todos = reactive([
-      {
-        id: 1,
-        name: 'hoge',
-        detail: 'this is detail',
-        completed: false,
-        deleted: false,
-      },
-    ]);
-
-    return { todos };
+<script setup lang="ts">
+const todos = [
+  {
+    id: 1,
+    name: 'hoge',
+    detail: 'this is dsssesstsail',
+    completed: false,
+    deleted: false,
   },
-});
+];
 </script>
 
 <style scoped>
