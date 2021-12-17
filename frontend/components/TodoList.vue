@@ -12,16 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="todo in todos" v-bind:key="todo.id">
-          <td>
-            <template v-if="todo.completed">済</template>
-            <template v-else>未</template>
-          </td>
-          <td>{{ todo.name }}</td>
-          <td>{{ todo.detail }}</td>
-          <td><button>編集</button></td>
-          <td>
-            <template v-if="!todo.deleted"><button>削除</button></template>
-          </td>
+          <ShowTodo :todo="todo"></ShowTodo>
         </tr>
       </tbody>
     </table>
@@ -30,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import ShowTodo from './ShowTodo.vue';
 const { data: todos } = await useFetch('/api/todo');
 </script>
 

@@ -1,6 +1,6 @@
 import type { IncomingMessage, ServerResponse } from 'http';
 
-interface Todo {
+export interface Todo {
   id: number;
   name: string;
   detail: string;
