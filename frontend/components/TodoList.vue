@@ -12,7 +12,7 @@
       </thead>
       <tbody>
         <tr v-for="todo in todos" v-bind:key="todo.id">
-          <ShowTodo :todo="todo"></ShowTodo>
+          <EditTodo :todo="todo" @update-name="updateName" @update-detail="updateDetail"></EditTodo>
         </tr>
       </tbody>
     </table>
@@ -22,7 +22,22 @@
 
 <script setup lang="ts">
 import ShowTodo from './ShowTodo.vue';
+import EditTodo from './EditTodo.vue';
 const { data: todos } = await useFetch('/api/todo');
+
+const updateName = (value: string, id: number): void => {
+  const targetTodo = todos.value.find((todo) => todo.id === id);
+  if (targetTodo !== undefined) {
+    targetTodo.name = value;
+  }
+};
+
+const updateDetail = (value: string, id: number): void => {
+  const targetTodo = todos.value.find((todo) => todo.id === id);
+  if (targetTodo !== undefined) {
+    targetTodo.detail = value;
+  }
+};
 </script>
 
 <style scoped>
