@@ -14,7 +14,7 @@ class Apiv1::TodoController < ApplicationController
 
   def update
     todo = Todo.find(params[:id])
-    todo.update(create_params)
+    todo.update(todo_params)
     render json: todo.to_json, status: :created
   end
 
