@@ -4,30 +4,26 @@
       <thead>
         <tr>
           <th>未/済</th>
-          <th>名前</th>
-          <th>詳細</th>
+          <th class="name">名前</th>
+          <th class="detail">詳細</th>
           <th>編集</th>
           <th>削除</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="todo in todos" v-bind:key="todo.id">
-          <EditTodo
-            :todo="todo"
-            @update-name="updateName"
-            @update-detail="updateDetail"
-            @save-todo="saveTodo"
-          ></EditTodo>
+          <TodoRow :todo="todo" @update-name="updateName" @update-detail="updateDetail" @save-todo="saveTodo"></TodoRow>
         </tr>
       </tbody>
     </table>
-    <button>追加</button>
+    <button @click="addTodo">追加</button>
   </div>
 </template>
 
 <script setup lang="ts">
-import ShowTodo from './ShowTodo.vue';
-import EditTodo from './EditTodo.vue';
+import TodoRow from './TodoRow.vue';
+import { Todo } from 'server/api/todo';
+
 const { data: todos } = await useFetch('/api/todo');
 
 const updateName = (value: string, id: number): void => {
@@ -54,12 +50,24 @@ const saveTodo = async (id: number): Promise<void> => {
     body: { name: targetTodo.name, detail: targetTodo.detail },
   });
 };
+
+const addTodo = async () => {
+  const res: Todo = await $fetch('http://localhost:3000/apiv1/todo', {
+    method: 'POST',
+    body: { name: '', detail: '' },
+  });
+  todos.value.push(res);
+};
 </script>
 
 <style scoped>
 table,
 td {
   border: 1px solid #333;
+}
+.name,
+.detail {
+  width: 150px;
 }
 
 thead,

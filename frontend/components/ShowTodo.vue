@@ -5,7 +5,7 @@
   </td>
   <td>{{ todo.name }}</td>
   <td>{{ todo.detail }}</td>
-  <td><button>編集</button></td>
+  <td><button @click="clickEdit">編集</button></td>
   <td>
     <template v-if="!todo.deleted"><button>削除</button></template>
   </td>
@@ -17,8 +17,16 @@ import { Todo } from 'server/api/todo';
 interface Props {
   todo: Todo;
 }
-
 defineProps<Props>();
+
+interface Emits {
+  (e: 'edit-todo'): void;
+}
+const emit = defineEmits<Emits>();
+
+const clickEdit = () => {
+  emit('edit-todo');
+};
 </script>
 
 <style scoped>

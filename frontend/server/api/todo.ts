@@ -6,8 +6,6 @@ export interface Todo {
   detail: string;
   completed: boolean;
   deleted: boolean;
-  created_at: string;
-  updated_at: string;
 }
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
