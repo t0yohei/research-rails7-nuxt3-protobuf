@@ -5,7 +5,7 @@
   </td>
   <td><input :value="todo.name" @input="InputName" /></td>
   <td><input :value="todo.detail" @input="InputDetail" /></td>
-  <td><button>保存</button></td>
+  <td><button @click="clickSave">保存</button></td>
   <td>
     <template v-if="!todo.deleted"><button>削除</button></template>
   </td>
@@ -21,6 +21,7 @@ interface Props {
 interface Emits {
   (e: 'update-name', value: string, id: number): void;
   (e: 'update-detail', value: string, id: number): void;
+  (e: 'save-todo', id: number): void;
 }
 
 const props = defineProps<Props>();
@@ -35,6 +36,9 @@ const InputDetail = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
     emit('update-detail', e.target.value, props.todo.id);
   }
+};
+const clickSave = () => {
+  emit('save-todo', props.todo.id);
 };
 </script>
 
