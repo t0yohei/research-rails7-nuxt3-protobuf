@@ -12,7 +12,13 @@
       </thead>
       <tbody>
         <tr v-for="todo in todos" v-bind:key="todo.id">
-          <TodoRow :todo="todo" @update-name="updateName" @update-detail="updateDetail" @save-todo="saveTodo"></TodoRow>
+          <TodoRow
+            :todo="todo"
+            @update-name="updateName"
+            @update-detail="updateDetail"
+            @save-todo="saveTodo"
+            @delete-todo="deleteTodo"
+          ></TodoRow>
         </tr>
       </tbody>
     </table>
@@ -49,6 +55,20 @@ const saveTodo = async (id: number): Promise<void> => {
     method: 'PUT',
     body: { name: targetTodo.name, detail: targetTodo.detail },
   });
+};
+
+const deleteTodo = async (id: number): Promise<void> => {
+  const targetTodo = todos.value.find((todo) => todo.id === id);
+  if (targetTodo == undefined) {
+    return;
+  }
+  const res = await $fetch(`http://localhost:3000/apiv1/todo/${targetTodo.id}`, {
+    method: 'DELETE',
+  });
+  const newTodos = todos.value.filter((v) => {
+    return v.id !== id;
+  });
+  todos.value = newTodos;
 };
 
 const addTodo = async () => {

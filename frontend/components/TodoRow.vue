@@ -1,5 +1,5 @@
 <template>
-  <ShowTodo v-if="todoState == 'show'" :todo="todo" @edit-todo="editTodo"></ShowTodo>
+  <ShowTodo v-if="todoState == 'show'" :todo="todo" @edit-todo="editTodo" @delete-todo="deleteTodo"></ShowTodo>
   <EditTodo
     v-else
     :todo="todo"
@@ -17,12 +17,13 @@ import EditTodo from './EditTodo.vue';
 interface Props {
   todo: Todo;
 }
-defineProps<Props>();
+const props = defineProps<Props>();
 
 interface Emits {
   (e: 'update-name', value: string, id: number): void;
   (e: 'update-detail', value: string, id: number): void;
   (e: 'save-todo', id: number): void;
+  (e: 'delete-todo', id: number): void;
 }
 const emit = defineEmits<Emits>();
 
@@ -33,15 +34,18 @@ const editTodo = () => {
   todoState.value = 'edit';
 };
 
-const updateName = (value: string, id: number) => {
-  emit('update-name', value, id);
+const updateName = (value: string) => {
+  emit('update-name', value, props.todo.id);
 };
-const updateDetail = (value: string, id: number) => {
-  emit('update-detail', value, id);
+const updateDetail = (value: string) => {
+  emit('update-detail', value, props.todo.id);
 };
-const saveTodo = (id: number) => {
+const saveTodo = () => {
   todoState.value = 'show';
-  emit('save-todo', id);
+  emit('save-todo', props.todo.id);
+};
+const deleteTodo = () => {
+  emit('delete-todo', props.todo.id);
 };
 </script>
 

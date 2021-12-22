@@ -7,7 +7,7 @@
   <td>{{ todo.detail }}</td>
   <td><button @click="clickEdit">編集</button></td>
   <td>
-    <template v-if="!todo.deleted"><button>削除</button></template>
+    <template v-if="!todo.deleted"><button @click="clickDelete">削除</button></template>
   </td>
 </template>
 
@@ -21,11 +21,16 @@ defineProps<Props>();
 
 interface Emits {
   (e: 'edit-todo'): void;
+  (e: 'delete-todo'): void;
 }
 const emit = defineEmits<Emits>();
 
 const clickEdit = () => {
   emit('edit-todo');
+};
+
+const clickDelete = () => {
+  emit('delete-todo');
 };
 </script>
 

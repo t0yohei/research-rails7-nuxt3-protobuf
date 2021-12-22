@@ -6,9 +6,6 @@
   <td><input :value="todo.name" @input="InputName" /></td>
   <td><input :value="todo.detail" @input="InputDetail" /></td>
   <td><button @click="clickSave">保存</button></td>
-  <td>
-    <template v-if="!todo.deleted"><button>削除</button></template>
-  </td>
 </template>
 
 <script setup lang="ts">
@@ -17,28 +14,27 @@ import { Todo } from 'server/api/todo';
 interface Props {
   todo: Todo;
 }
+defineProps<Props>();
 
 interface Emits {
-  (e: 'update-name', value: string, id: number): void;
-  (e: 'update-detail', value: string, id: number): void;
-  (e: 'save-todo', id: number): void;
+  (e: 'update-name', value: string): void;
+  (e: 'update-detail', value: string): void;
+  (e: 'save-todo'): void;
 }
-
-const props = defineProps<Props>();
-
 const emit = defineEmits<Emits>();
+
 const InputName = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
-    emit('update-name', e.target.value, props.todo.id);
+    emit('update-name', e.target.value);
   }
 };
 const InputDetail = (e: Event) => {
   if (e.target instanceof HTMLInputElement) {
-    emit('update-detail', e.target.value, props.todo.id);
+    emit('update-detail', e.target.value);
   }
 };
 const clickSave = () => {
-  emit('save-todo', props.todo.id);
+  emit('save-todo');
 };
 </script>
 
