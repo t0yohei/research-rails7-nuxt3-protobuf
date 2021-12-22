@@ -18,9 +18,9 @@ class Apiv1::TodoController < ApplicationController
     render json: todo.to_json, status: :created
   end
 
-  def destory
+  def destroy
     todo = Todo.find(params[:id])
-    todo.destory
+    todo.destroy
     head :no_content
   end
 
