@@ -8,5 +8,9 @@
   "devDependencies": {
     "nuxt3": "latest",
     "prettier": "^2.5.1"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.19.1",
+    "ts-protoc-gen": "^0.15.0"
   }
 }
