@@ -1,0 +1,69 @@
+class IndexTodoRequest < ::Protobuf::Message
+  def initialize: () -> void
+end
+
+class IndexTodoResponse < ::Protobuf::Message
+  attr_accessor todos(): ::Todos?
+
+  def initialize: (?todos: ::Todos?) -> void
+
+  def []: (:todos) -> ::Todos?
+        | (::Symbol) -> untyped
+
+  def []=: (:todos, ::Todos?) -> ::Todos?
+         | (::Symbol, untyped) -> untyped
+end
+
+class Todos < ::Protobuf::Message
+  attr_accessor todo(): ::Protobuf::Field::FieldArray[::Todo, ::Todo]
+
+  def initialize: (?todo: ::Protobuf::Field::FieldArray[::Todo, ::Todo]) -> void
+
+  def []: (:todo) -> ::Protobuf::Field::FieldArray[::Todo, ::Todo]
+        | (::Symbol) -> untyped
+
+  def []=: (:todo, ::Protobuf::Field::FieldArray[::Todo, ::Todo]) -> ::Protobuf::Field::FieldArray[::Todo, ::Todo]
+         | (::Symbol, untyped) -> untyped
+end
+
+class Todo < ::Protobuf::Message
+  attr_reader id(): ::Integer
+
+  attr_writer id(): ::Integer?
+
+  attr_reader name(): ::String
+
+  attr_writer name(): ::String?
+
+  attr_reader detail(): ::String
+
+  attr_writer detail(): ::String?
+
+  attr_reader completed(): true | false
+
+  attr_writer completed(): (true | false)?
+
+  attr_reader deleted(): true | false
+
+  attr_writer deleted(): (true | false)?
+
+  def initialize: (?id: ::Integer?, ?name: ::String?, ?detail: ::String?, ?completed: (true | false)?, ?deleted: (true | false)?) -> void
+
+  def []: (:id) -> ::Integer
+        | (:name) -> ::String
+        | (:detail) -> ::String
+        | (:completed) -> (true | false)
+        | (:deleted) -> (true | false)
+        | (::Symbol) -> untyped
+
+  def []=: (:id, ::Integer?) -> ::Integer?
+         | (:name, ::String?) -> ::String?
+         | (:detail, ::String?) -> ::String?
+         | (:completed, (true | false)?) -> (true | false)?
+         | (:deleted, (true | false)?) -> (true | false)?
+         | (::Symbol, untyped) -> untyped
+
+  def completed?: () -> bool
+
+  def deleted?: () -> bool
+end

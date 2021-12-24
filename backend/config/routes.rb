@@ -4,4 +4,8 @@ Rails.application.routes.draw do
 
     resources :todo, only: [:index, :create, :update, :destroy]
   end
+
+  namespace :apiv2 do
+    resources :todo, only: [:index, :create, :update, :destroy]
+  end
 end
