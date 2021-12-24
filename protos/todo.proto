@@ -4,11 +4,7 @@ option ruby_package = "Protos::";
 message IndexTodoRequest {}
 
 message IndexTodoResponse {
-  Todos todos = 1;
-}
-
-message Todos {
-  repeated Todo todo = 1;
+  repeated Todo todos = 1;
 }
 
 message Todo {

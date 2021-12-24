@@ -3,7 +3,7 @@ require "#{Rails.root}/lib/protos/todo_pb.rb"
 class Apiv2::TodoController < ApplicationController
   def index
     todos = Todo.all
-    todos_proto = ::Protos::Todos.new
+    response = ::Protos::IndexTodoResponse.new
     todos.each do |todo|
       todo_proto = ::Protos::Todo.new(
         id: todo.id,
@@ -12,10 +12,10 @@ class Apiv2::TodoController < ApplicationController
         completed: todo.completed,
         deleted: todo.deleted,
       )
-      todos_proto.todo.push(todo_proto)
+
+      response.todos.push(todo_proto)
     end
 
-    response = ::Protos::IndexTodoResponse.new(todos: todos_proto)
     render json: response.to_json
   end
 

@@ -8,10 +8,7 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     add_message "IndexTodoRequest" do
     end
     add_message "IndexTodoResponse" do
-      optional :todos, :message, 1, "Todos"
-    end
-    add_message "Todos" do
-      repeated :todo, :message, 1, "Todo"
+      repeated :todos, :message, 1, "Todo"
     end
     add_message "Todo" do
       optional :id, :int32, 1
@@ -26,6 +23,5 @@ end
 module Protos
   IndexTodoRequest = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IndexTodoRequest").msgclass
   IndexTodoResponse = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("IndexTodoResponse").msgclass
-  Todos = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Todos").msgclass
   Todo = ::Google::Protobuf::DescriptorPool.generated_pool.lookup("Todo").msgclass
 end
