@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="todo in todos" v-bind:key="todo.id">
+        <tr v-for="todo in state.todos" v-bind:key="todo.id">
           <TodoRow
             :todo="todo"
             @update-name="updateName"
@@ -28,26 +28,31 @@
 
 <script setup lang="ts">
 import TodoRow from './TodoRow.vue';
-import { Todo } from 'server/api/todo';
+import Todo from './todo.d';
 
-const { data: todos } = await useFetch('/api/todo');
+interface State {
+  todos: Todo[];
+}
+
+const response: Todo[] = await $fetch('http://localhost:3000/apiv1/todo');
+const state = reactive<State>({ todos: response });
 
 const updateName = (value: string, id: number): void => {
-  const targetTodo = todos.value.find((todo) => todo.id === id);
+  const targetTodo = state.todos.find((todo) => todo.id === id);
   if (targetTodo !== undefined) {
     targetTodo.name = value;
   }
 };
 
 const updateDetail = (value: string, id: number): void => {
-  const targetTodo = todos.value.find((todo) => todo.id === id);
+  const targetTodo = state.todos.find((todo) => todo.id === id);
   if (targetTodo !== undefined) {
     targetTodo.detail = value;
   }
 };
 
 const saveTodo = async (id: number): Promise<void> => {
-  const targetTodo = todos.value.find((todo) => todo.id === id);
+  const targetTodo = state.todos.find((todo) => todo.id === id);
   if (targetTodo == undefined) {
     return;
   }
@@ -58,17 +63,17 @@ const saveTodo = async (id: number): Promise<void> => {
 };
 
 const deleteTodo = async (id: number): Promise<void> => {
-  const targetTodo = todos.value.find((todo) => todo.id === id);
+  const targetTodo = state.todos.find((todo) => todo.id === id);
   if (targetTodo == undefined) {
     return;
   }
   const res = await $fetch(`http://localhost:3000/apiv1/todo/${targetTodo.id}`, {
     method: 'DELETE',
   });
-  const newTodos = todos.value.filter((v) => {
+  const newTodos = state.todos.filter((v) => {
     return v.id !== id;
   });
-  todos.value = newTodos;
+  state.todos = newTodos;
 };
 
 const addTodo = async () => {
@@ -76,7 +81,7 @@ const addTodo = async () => {
     method: 'POST',
     body: { name: '', detail: '' },
   });
-  todos.value.push(res);
+  state.todos.push(res);
 };
 </script>
 
