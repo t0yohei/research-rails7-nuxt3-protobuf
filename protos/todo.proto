@@ -1,0 +1,20 @@
+syntax = "proto3";
+option ruby_package = "Protos::";
+
+message IndexTodoRequest {}
+
+message IndexTodoResponse {
+  Todos todos = 1;
+}
+
+message Todos {
+  repeated Todo todo = 1;
+}
+
+message Todo {
+  int32 id = 1;
+  string name = 2;
+  string detail = 3;
+  bool completed = 4;
+  bool deleted = 5;
+}
