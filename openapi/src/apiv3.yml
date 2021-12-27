@@ -1,67 +1,57 @@
 openapi: 3.0.2
 info:
-  title: 匿名掲示板API
+  title: TODOリスト
   version: 1.0.0
 servers:
   - url: http://localhost:3000
     description: development
 paths:
-  /posts:
+  /apiv3/todos:
     get:
-      description: 投稿をすべて取得する
-      operationId: getPosts
+      description: TODOをすべて取得する
+      operationId: getTODOs
       responses:
         '200':
-          $ref: '#/components/responses/Posts'
+          $ref: '#/components/responses/Todos'
 components:
   schemas:
-    Post:
+    Todos:
       type: object
       properties:
-        post:
-          $ref: '#/components/schemas/PostProperties'
-      required:
-        - post
-    Posts:
-      type: object
-      properties:
-        posts:
+        todos:
           type: array
           items:
-            $ref: '#/components/schemas/PostProperties'
+            $ref: '#/components/schemas/TodoProperties'
       required:
-        - posts
-    PostProperties:
+        - todos
+    TodoProperties:
       type: object
       properties:
         id:
           type: integer
           example: 1
-        title:
+        name:
           type: string
-          example: こんにちは
-        content:
+          example: todo name
+        detail:
           type: string
-          example: 良い天気ですね
-        posted_at:
-          type: string
-          format: date-time
-          example: '2018-12-01T00:00:00Z'
+          example: todo detail
+        completed:
+          type: boolean
+          example: false
+        deleted:
+          type: boolean
+          example: false
       required:
         - id
-        - title
-        - content
-        - posted_at
+        - name
+        - detail
+        - completed
+        - deleted
   responses:
-    Post:
-      description: 投稿
+    Todos:
+      description: TODOの配列
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Post'
-    Posts:
-      description: 投稿の配列
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Posts'
+            $ref: '#/components/schemas/Todos'
