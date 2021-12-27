@@ -1,0 +1,47 @@
+openapi: 3.0.2
+info:
+  title: 匿名掲示板API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+    description: development
+paths:
+  /posts:
+    get:
+      description: 投稿をすべて取得する
+      operationId: getPosts
+      responses:
+        "200":
+          $ref: "#/components/responses/Posts"
+components:
+  schemas:
+    Posts:
+      type: object
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: "#/components/schemas/PostProperties"
+      required:
+        - posts
+    PostProperties:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        title:
+          type: string
+          example: こんにちは
+        content:
+          type: string
+          example: 良い天気ですね
+        posted_at:
+          type: string
+          format: date-time
+          example: "2018-12-01T00:00:00Z"
+      required:
+        - id
+        - title
+        - content
+        - posted_at
