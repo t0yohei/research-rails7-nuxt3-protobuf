@@ -14,10 +14,10 @@
 $ brew update
 $ cd backend
 $ brew upgrade rbenv ruby-build
-$ rbenv install 3.0.2
-$ rbenv local 3.0.2
+$ rbenv install 3.1.0
+$ rbenv local 3.1.0
 $ ruby -v
-ruby 3.0.2p107 (2021-07-07 revision 0db68f0233) [x86_64-darwin20]
+ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-darwin21]
 
 $ bundle install --path vendor/bundle
 $ bundle exec rails s
