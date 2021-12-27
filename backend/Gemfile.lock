@@ -99,7 +99,6 @@ GEM
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    google-protobuf (3.19.1-x86_64-darwin)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     io-console (0.5.9)
@@ -113,10 +112,12 @@ GEM
     marcel (1.0.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
+    mini_portile2 (2.6.1)
     minitest (5.15.0)
     msgpack (1.4.2)
     nio4r (2.5.8)
-    nokogiri (1.12.5-x86_64-darwin)
+    nokogiri (1.12.5)
+      mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -137,10 +138,6 @@ GEM
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     rake (13.0.6)
-    rbs (1.8.1)
-    rbs_protobuf (0.1.0)
-      activesupport (>= 4.0)
-      rbs (>= 1.0.4)
     reline (0.2.7)
       io-console (~> 0.5)
     sqlite3 (1.4.2)
@@ -154,21 +151,20 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   debug (>= 1.0.0)
-  google-protobuf
   pry-rails
   puma (~> 5.0)
   rack-cors
   rails!
-  rbs_protobuf
   sqlite3 (~> 1.4)
   tzinfo-data
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.1.0p0
 
 BUNDLED WITH
    2.2.33
