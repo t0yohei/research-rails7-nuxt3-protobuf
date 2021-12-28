@@ -3,10 +3,12 @@
   "scripts": {
     "dev": "nuxi dev --port 8000",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "generate-client": "openapi --input ../openapi/src/apiv3.yml --output ./lib/api/openapi --client fetch --useUnionTypes"
   },
   "devDependencies": {
     "nuxt3": "latest",
+    "openapi-typescript-codegen": "^0.12.5",
     "prettier": "^2.5.1"
   },
   "dependencies": {
