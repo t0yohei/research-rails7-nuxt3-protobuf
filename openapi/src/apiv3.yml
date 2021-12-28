@@ -3,7 +3,7 @@ info:
   title: TODOリスト
   version: 1.0.0
 servers:
-  - url: http://localhost:3000
+  - url: 'http://localhost:3000'
     description: development
 paths:
   /apiv3/todos:
@@ -21,10 +21,10 @@ components:
         todos:
           type: array
           items:
-            $ref: '#/components/schemas/TodoProperties'
+            $ref: '#/components/schemas/Todo'
       required:
         - todos
-    TodoProperties:
+    Todo:
       type: object
       properties:
         id:
@@ -48,6 +48,7 @@ components:
         - detail
         - completed
         - deleted
+      title: ''
   responses:
     Todos:
       description: TODOの配列
