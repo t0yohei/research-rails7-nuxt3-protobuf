@@ -1,6 +1,6 @@
 class Apiv3::TodosController < ApplicationController
   def index
-    render json: Todo.all.to_json
+    render json: { todos: Todo.all }
   end
 
   def create
