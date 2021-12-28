@@ -56,10 +56,13 @@ const saveTodo = async (id: number): Promise<void> => {
   if (targetTodo == undefined) {
     return;
   }
-  const res = await $fetch(`http://localhost:3000/apiv1/todo/${targetTodo.id}`, {
-    method: 'PUT',
-    body: { name: targetTodo.name, detail: targetTodo.detail },
-  });
+  const res = await $fetch(
+    `http://localhost:3000/apiv1/todo/${targetTodo.id}`,
+    {
+      method: 'PUT',
+      body: { name: targetTodo.name, detail: targetTodo.detail },
+    }
+  );
 };
 
 const deleteTodo = async (id: number): Promise<void> => {
@@ -67,9 +70,12 @@ const deleteTodo = async (id: number): Promise<void> => {
   if (targetTodo == undefined) {
     return;
   }
-  const res = await $fetch(`http://localhost:3000/apiv1/todo/${targetTodo.id}`, {
-    method: 'DELETE',
-  });
+  const res = await $fetch(
+    `http://localhost:3000/apiv1/todo/${targetTodo.id}`,
+    {
+      method: 'DELETE',
+    }
+  );
   const newTodos = state.todos.filter((v) => {
     return v.id !== id;
   });

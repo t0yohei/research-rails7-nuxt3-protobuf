@@ -7,7 +7,9 @@
   <td>{{ todo.detail }}</td>
   <td><button @click="clickEdit">編集</button></td>
   <td>
-    <template v-if="!todo.deleted"><button @click="clickDelete">削除</button></template>
+    <template v-if="!todo.deleted"
+      ><button @click="clickDelete">削除</button></template
+    >
   </td>
 </template>
 
