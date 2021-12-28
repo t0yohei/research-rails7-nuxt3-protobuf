@@ -13,6 +13,32 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Todos'
+        '201':
+          description: Created
+  '/apiv3/todos/{todoId}':
+    parameters:
+      - $ref: '#/components/parameters/todoParam'
+    put:
+      summary: ''
+      operationId: putTodo
+      responses:
+        '200':
+          $ref: '#/components/responses/Todo'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    message: error message
+      requestBody:
+        $ref: '#/components/requestBodies/updataTodo'
 components:
   schemas:
     Todos:
@@ -56,3 +82,42 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Todos'
+    Todo:
+      description: 単体のTodo
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Todo'
+  parameters:
+    todoParam:
+      name: todoId
+      in: path
+      required: true
+      schema:
+        type: integer
+      description: todoのid
+  requestBodies:
+    updataTodo:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              todo:
+                type: object
+                required:
+                  - name
+                  - detail
+                properties:
+                  name:
+                    type: string
+                  detail:
+                    type: string
+            required:
+              - todo
+          examples:
+            example-1:
+              value:
+                todo:
+                  name: todo名
+                  detail: 詳細
