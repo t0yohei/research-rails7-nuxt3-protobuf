@@ -1,16 +1,16 @@
 <template>
   <div>
-    <TodoList />
+    <OpenApiTodoList />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import TodoList from '/components/openapi/TodoList.vue';
+import OpenApiTodoList from '/components/openapi/TodoList.vue';
 
 export default defineComponent({
   components: {
-    TodoList,
+    OpenApiTodoList,
   },
 });
 </script>
