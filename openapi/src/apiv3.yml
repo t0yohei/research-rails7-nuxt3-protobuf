@@ -9,7 +9,7 @@ paths:
   /apiv3/todos:
     get:
       description: TODOをすべて取得する
-      operationId: getTODOs
+      operationId: getTodos
       responses:
         '200':
           $ref: '#/components/responses/Todos'
