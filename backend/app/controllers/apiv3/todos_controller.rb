@@ -1,4 +1,4 @@
-class Apiv3::TodoController < ApplicationController
+class Apiv3::TodosController < ApplicationController
   def index
     render json: Todo.all.to_json
   end

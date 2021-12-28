@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   end
 
   namespace :apiv3 do
-    resources :todo, only: [:index, :create, :update, :destroy]
+    resources :todos, only: [:index, :create, :update, :destroy]
   end
 end
