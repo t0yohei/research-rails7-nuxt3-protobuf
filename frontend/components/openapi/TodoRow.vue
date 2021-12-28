@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { TodoProperties } from '~/lib/api/openapi/models/TodoProperties';
+import { Todo } from '~/lib/api/openapi/models/Todo';
 import ShowTodo from './ShowTodo.vue';
 import EditTodo from './EditTodo.vue';
 
 interface Props {
-  todo: TodoProperties;
+  todo: Todo;
 }
 const props = defineProps<Props>();
 

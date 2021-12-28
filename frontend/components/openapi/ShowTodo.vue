@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { TodoProperties } from '~/lib/api/openapi/models/TodoProperties';
+import { Todo } from '~/lib/api/openapi/models/Todo';
 
 interface Props {
-  todo: TodoProperties;
+  todo: Todo;
 }
 defineProps<Props>();
 

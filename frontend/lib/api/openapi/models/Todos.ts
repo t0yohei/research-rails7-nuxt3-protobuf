@@ -2,8 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { TodoProperties } from './TodoProperties';
+import type { Todo } from './Todo';
 
 export type Todos = {
-    todos: Array<TodoProperties>;
+    todos: Array<Todo>;
 }

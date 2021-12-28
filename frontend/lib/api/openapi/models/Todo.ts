@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type TodoProperties = {
+export type Todo = {
     id: number;
     name: string;
     detail: string;
