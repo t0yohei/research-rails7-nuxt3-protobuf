@@ -55,13 +55,11 @@ const saveTodo = async (id: number): Promise<void> => {
   if (targetTodo == undefined) {
     return;
   }
-  const res = await $fetch(
-    `http://localhost:3000/apiv1/todo/${targetTodo.id}`,
-    {
-      method: 'PUT',
-      body: { name: targetTodo.name, detail: targetTodo.detail },
-    }
-  );
+  await ServiceService.putTodo(targetTodo.id, {
+    todo: { name: targetTodo.name, detail: targetTodo.detail },
+  }).then((result) => {
+    console.log(result);
+  });
 };
 
 const deleteTodo = async (id: number): Promise<void> => {
