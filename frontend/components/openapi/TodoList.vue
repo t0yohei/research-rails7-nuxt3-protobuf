@@ -67,12 +67,7 @@ const deleteTodo = async (id: number): Promise<void> => {
   if (targetTodo == undefined) {
     return;
   }
-  const res = await $fetch(
-    `http://localhost:3000/apiv1/todo/${targetTodo.id}`,
-    {
-      method: 'DELETE',
-    }
-  );
+  await ServiceService.deleteTodo(targetTodo.id);
   const newTodos = state.todos.filter((v) => {
     return v.id !== id;
   });

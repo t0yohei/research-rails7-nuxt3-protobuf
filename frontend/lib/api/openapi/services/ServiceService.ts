@@ -47,4 +47,18 @@ export class ServiceService {
         });
     }
 
+    /**
+     * @param todoId todoのid
+     * @returns void
+     * @throws ApiError
+     */
+    public static deleteTodo(
+        todoId: number,
+    ): CancelablePromise<void> {
+        return __request({
+            method: 'DELETE',
+            path: `/apiv3/todos/${todoId}`,
+        });
+    }
+
 }

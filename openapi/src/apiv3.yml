@@ -39,6 +39,13 @@ paths:
                     message: error message
       requestBody:
         $ref: '#/components/requestBodies/updataTodo'
+    delete:
+      summary: ''
+      operationId: deleteTodo
+      responses:
+        '204':
+          description: No Content
+      description: ''
 components:
   schemas:
     Todos:
