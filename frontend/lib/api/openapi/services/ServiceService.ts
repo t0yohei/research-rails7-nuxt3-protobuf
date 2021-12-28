@@ -22,6 +22,30 @@ export class ServiceService {
     }
 
     /**
+     * @param requestBody
+     * @returns Todo 単体のTodo
+     * @throws ApiError
+     */
+    public static postTodo(
+        requestBody?: {
+            todo: {
+                name: string;
+                detail: string;
+            };
+        },
+    ): CancelablePromise<Todo> {
+        return __request({
+            method: 'POST',
+            path: `/apiv3/todos`,
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+            },
+        });
+    }
+
+    /**
      * @param todoId todoのid
      * @param requestBody
      * @returns Todo 単体のTodo

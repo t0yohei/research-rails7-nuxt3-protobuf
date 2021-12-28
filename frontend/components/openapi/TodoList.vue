@@ -75,11 +75,10 @@ const deleteTodo = async (id: number): Promise<void> => {
 };
 
 const addTodo = async () => {
-  // const res: Todo = await $fetch('http://localhost:3000/apiv1/todo', {
-  //   method: 'POST',
-  //   body: { name: '', detail: '' },
-  // });
-  // state.todos.push(res);
+  const response = await ServiceService.postTodo({
+    todo: { name: '', detail: '' },
+  });
+  state.todos.push(response);
 };
 </script>
 

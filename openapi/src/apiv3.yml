@@ -15,6 +15,27 @@ paths:
           $ref: '#/components/responses/Todos'
         '201':
           description: Created
+    post:
+      summary: ''
+      operationId: postTodo
+      responses:
+        '200':
+          $ref: '#/components/responses/Todo'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+              examples:
+                example-1:
+                  value:
+                    message: error message
+      requestBody:
+        $ref: '#/components/requestBodies/updataTodo'
   '/apiv3/todos/{todoId}':
     parameters:
       - $ref: '#/components/parameters/todoParam'
